@@ -34,42 +34,45 @@ Recorder.onStop(res => {
   console.log('监听结束录音')
   InnerAudioContext.src = res.tempFilePath
 
-  wx.uploadFile({
-    url: "http://192.168.0.109:3000/upload",
-    method: "post",
-    filePath: res.tempFilePath,
-    name: "wx",
-    formData: {
-      text: 'I am the king of the world'
-    },
-    success(ret) {
-      const options = JSON.parse(ret.data)
+  getIse('I am the king of the world', res.tempFilePath)
+  .then(res => console.log(res))
 
-      post({
-        url: options.url,
-        data: options.data,
-        header: options.headers
-      }).then(res => {
-        console.log(res)
-      })
+  // wx.uploadFile({
+  //   url: "http://192.168.0.109:3000/upload",
+  //   method: "post",
+  //   filePath: res.tempFilePath,
+  //   name: "wx",
+  //   formData: {
+  //     text: 'I am the king of the world'
+  //   },
+  //   success(ret) {
+  //     const options = JSON.parse(ret.data)
 
-      // wx.request({
-      //   url: options.url,
-      //   method: 'POST',
-      //   data: options.data,
-      //   header: options.headers,
-      //   success: (res) => {
-      //     console.log(res)
-      //   },
-      //   fail: (error) => {
-      //     console.log(error)
-      //   },
-      // })
+  //     post({
+  //       url: options.url,
+  //       data: options.data,
+  //       header: options.headers
+  //     }).then(res => {
+  //       console.log(res)
+  //     })
 
-    },
-    fail(err) {
-      console.log("录音发送到后台失败");
-      console.log(err);
-    }
-  })
+  //     // wx.request({
+  //     //   url: options.url,
+  //     //   method: 'POST',
+  //     //   data: options.data,
+  //     //   header: options.headers,
+  //     //   success: (res) => {
+  //     //     console.log(res)
+  //     //   },
+  //     //   fail: (error) => {
+  //     //     console.log(error)
+  //     //   },
+  //     // })
+
+  //   },
+  //   fail(err) {
+  //     console.log("录音发送到后台失败");
+  //     console.log(err);
+  //   }
+  // })
 })

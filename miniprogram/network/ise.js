@@ -15,11 +15,11 @@ export function getIse(text, path) {
   function getXParamStr() {  // 组装业务参数
     let xParam = {
       "aue": "raw",      // 音频编码
-      // "result_level": "simple",      // 结果级别
+      "result_level": "simple",      // 结果级别
       "language": "en_us",      // 语种
       "category": "read_sentence"      // 评测种类
     }
-    return Base64.encode(xParam)
+    return Base64.encode(JSON.stringify(xParam))
   }
   function getReqHeader() {  // 组装请求头
     let xParamStr = getXParamStr()
@@ -33,9 +33,9 @@ export function getIse(text, path) {
     }
   }
   function getPostBody() {  // 组装postBody
-    let buffer = wx.getFileSystemManager().readFileSync(config.file)
+    let audio = wx.getFileSystemManager().readFileSync(config.file, 'base64')
     return {
-      audio: buffer.toString('base64'),
+      audio: audio,
       text: config.paper
     }
   }
@@ -47,6 +47,6 @@ export function getIse(text, path) {
   return post({
     url: options.url,
     data: options.form,
-    headers: options.headers
+    header: options.headers
   })
 }

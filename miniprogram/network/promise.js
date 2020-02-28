@@ -47,6 +47,7 @@ export const post = ({ url, data, header }) => request({ method:'POST', url, dat
 */
 
 export function request({method, url, data, header}) {
+  console.log('+++++++++++++++++')
   wx.showLoading({
     title: '请稍等...'
   })
@@ -60,11 +61,6 @@ export function request({method, url, data, header}) {
       success: res => response.success = res,
       fail: error => response.fail = error,
       complete() {
-        console.log({
-          url,
-          method,
-          data,
-          header})
         wx.hideLoading();
         if (response.success) {
           if (response.success.statusCode != 200) {
