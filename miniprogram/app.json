@@ -9,16 +9,16 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff3dd",
+    "navigationBarBackgroundColor": "#eeeeee",
     "navigationBarTitleText": "小黑口语",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fff3dd",
+    "backgroundColor": "#eeeeee",
     "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#ff5777",
-    "backgroundColor": "#fff3dd",
+    "backgroundColor": "#eeeeee",
     "borderStyle": "black",
     "list": [
       {

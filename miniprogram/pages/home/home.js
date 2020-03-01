@@ -3,6 +3,7 @@ import { getIse } from '../../network/ise.js'
 import { post, get} from '../../network/promise.js'
 const Recorder = wx.getRecorderManager()
 const InnerAudioContext  = wx.createInnerAudioContext()
+
 Page({
   data: {
 
@@ -10,7 +11,9 @@ Page({
   start() {
     console.log('开始录音')
     Recorder.start({
-      format: "wav"
+      format: "wav",
+      sampleRate: 16000,
+      numberOfChannels: 1
     })
   },
   end() {
@@ -37,8 +40,8 @@ Recorder.onStop(res => {
   getIse('I am the king of the world', res.tempFilePath)
   .then(res => console.log(res))
 
-  // wx.uploadFile({
-  //   url: "http://192.168.0.109:3000/upload",
+  // wx.uploadFile({  //上传录音文件
+  //   url: "http://192.168.0.100:3000/upload",
   //   method: "post",
   //   filePath: res.tempFilePath,
   //   name: "wx",
@@ -47,7 +50,7 @@ Recorder.onStop(res => {
   //   },
   //   success(ret) {
   //     const options = JSON.parse(ret.data)
-
+  //     console.log(options)
   //     post({
   //       url: options.url,
   //       data: options.data,

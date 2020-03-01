@@ -1,2 +1,6 @@
-<!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view>
+<view>语音测评</view>
+<view>ORC文字识别</view>
+<view>语音合成</view>
+<view>语音转写</view>
+</view>

@@ -1,4 +1,6 @@
 <!--pages/home/home.wxml-->
-<button bindtap="start">开始录音</button>
-<button bindtap="end">停止录音</button>
-<button bindtap="play">播放录音</button>
+<view>
+  <button bindtap="start">开始录音</button>
+  <button bindtap="end">停止录音</button>
+  <button bindtap="play">播放录音</button>
+</view>
